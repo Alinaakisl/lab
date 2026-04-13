@@ -103,46 +103,45 @@ function gameLoop() {
 }
 
 // TODO: добавить обработчик нажатия на клавиши
-document.addEventListener ('keydown', (event) => {
-    switch (event.key) {
-    case'ArrowLeft' :
-        direction = 'left';
-        break;
-    case 'ArrowRight':
-        direction = 'right';
-        break;
-    case'ArrowUp' :
-        direction ='up';
-         break;
-    case'ArrowDown' : 
-        direction= 'down';
-        break;
-    // TODO: добавить обработчик нажатия клавиши R (сброс игры)
-    case "r":
-        resetGame () ;
-        break;
-    case "R":
-        resetGame () ;
-        break;  
-     }  
-  }) ;
+document.addEventListener('keydown', (event) => {
+	switch(event.key) {
+	   case 'ArrowLeft':
+		direction = 'left';
+		break;
+	   case 'ArrowRight':
+		direction = 'right';
+		break;
+	   case 'ArrowUp':
+		direction = 'up';
+		break;
+	   case 'ArrowDown':
+		direction = 'down';
+		break;
+	   // TODO: добавить обработчик нажатия клавиши R (сброс игры)
+	   case 'r':
+		resetGame();
+		break;
+	   case 'R':
+		resetGame();
+		break;
+	}
+});
 
 // TODO: добавить возможность изменения скорости змейки
-const speedInput = document.getElementById('speed') ;
+const speedInput = document.getElementById('speed');
 speedInput.value = speed;
-speedInput.addEventListener ('change', (event) => {
-    const newSpeed = parseint (event.target.value) ;
-    if (newSpeed >= 100 && newSpeed <= 2000)
-        speed = newSpeed;
-    else
-        event.target.value = speed;
-}) ;
-const scorelabel= document.getElementById('score-value') ;
-updatescore (anaxe.length);
+speedInput.addEventListener('change', (event) => {
+	const newSpeed = parseInt(event.target.value);
+	if (newSpeed >= 100 && newSpeed <=2000)
+		speed = newSpeed;
+	esle
+		event.target.value = speed;
+});
+
+const scoreLabel = document.getElementById('score-value');
+updateScore(snake.length);
 gameLoop();
 
 function updateScore(score) {
-  acoreLabe1.texteContent = score;
-  // TODO: Реализуй меня!
+  scoreLabel.textContent = score;
 }
-
