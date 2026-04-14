@@ -3,30 +3,26 @@
   <head>
     <title>Home</title>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
+</head>
+<body>
     <div id="game-board"></div>
     <div class="controls"></div>
     <p></p>
-    <div class="joistick"
-        button onClick="direction='up'">UP</button>
-        button onClick="direction='left'">LEFT</button>
-        button onClick="direction='down'">DOWN</button>
-        button onClick="direction='right'">RIGHT</button>
+    <div class="joistick">
+	<button onClick="direction='up'">UP</button>
+	<button onClick="direction='down'">DOWN</button>
+	<button onClick="direction='left'">LEFT</button>
+	<button onClick="direction='right'">RIGHT</button>
     </div>
     <div>
-      <labe1 for="speed">Скорость</labe1>
-      <input type="number" step="50"/>
+	<label for="speed">Скорость</label>
+	<input id="speed"  type="number" step="50"/>
     </div>
     <div>
-      Счёт: <span id="score-value">
+	Счет: <span id="score-value"/>
     </div>
-    <script type="module" src="script.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
