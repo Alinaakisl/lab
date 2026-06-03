@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма аттестации</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 20px auto;
+            line-height: 1.6;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .add-name {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        button[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <div class="form-group">
+            <label for="name">Имя</label>
+            <p style="color: #666; font-size: 0.9em;">Полное имя, как оно указано в статьях</p>
+            <input type="text" id="name" placeholder="Введите имя">
+            <button type="button" class="add-name">+ Добавить имя</button>
+        </div>
+
+        <div class="form-group">
+            <label for="work">Место работы</label>
+            <p style="color: #666; font-size: 0.9em;">Пример: профессор математики, МГУ им. Ломоносова</p>
+            <input type="text" id="work" placeholder="Введите место работы">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Электронная почта для подтверждения</label>
+            <p style="color: #666; font-size: 0.9em;">Пример: kolmogorov@msu.ru</p>
+            <input type="email" id="email" placeholder="Введите email">
+        </div>
+
+        <div class="form-group">
+            <label for="interests">Области интересов</label>
+            <p style="color: #666; font-size: 0.9em;">Пример: топология, турбулентность, функциональный анализ</p>
+            <input type="text" id="interests" placeholder="Введите области интересов">
+        </div>
+
+        <div class="form-group">
+            <label for="website">Личная страница (необязательно)</label>
+            <p style="color: #666; font-size: 0.9em;">Пример: http://www.msu.ru/~kolmogorov</p>
+            <input type="url" id="website" placeholder="Введите URL страницы">
+        </div>
+
+        <button type="submit">Подать</button>
+    </form>
+</body>
+</html>

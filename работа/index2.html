@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 2: Блок с макс суммой цифр</title>
+    <style>
+        body {
+            font-family: monospace;
+            background: #2d2d44;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: #3c3c5c;
+            color: #f0f0f0;
+            padding: 30px;
+            border-radius: 24px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        h2 {
+            margin-top: 0;
+            color: #ffb347;
+            font-size: 24px;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            font-family: monospace;
+            font-size: 16px;
+            border-radius: 12px;
+            border: none;
+            margin: 10px 0;
+            background: #f5f5f5;
+            font-weight: bold;
+        }
+        button {
+            background: #ffb347;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+            color: #2d2d44;
+            transition: 0.2s;
+        }
+        button:hover {
+            background: #ff9f1a;
+            transform: scale(1.02);
+        }
+        .result {
+            background: #1e1e2a;
+            padding: 15px;
+            border-radius: 16px;
+            margin-top: 20px;
+            font-size: 18px;
+            border-left: 5px solid #ffb347;
+            font-family: monospace;
+            word-break: break-word;
+        }
+        .note {
+            font-size: 13px;
+            color: #ccc;
+            margin-top: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2> Максимальная сумма блока</h2>
+        <input type="text" id="inputString" placeholder="Введите строку цифр..." value="7210245011111111090">
+        <button id="runBtn">Найти блок</button>
+        
+        <div class="result" id="result">
+            Результат: —
+        </div>
+    </div>
+
+    <script>
+        // Основная функция по заданию: принимает строку цифр, возвращает объект с блоком и суммой
+        function getMaxBlockData(str) {
+            let parts = str.split('0');       // разбиваем по нулям
+            let bestBlock = '';
+            let bestSum = -1;
+            
+            for (let i = 0; i < parts.length; i++) {
+                let currentBlock = parts[i];
+                if (currentBlock.length === 0) continue;  // пустые пропускаем
+                
+                let currentSum = 0;
+                for (let j = 0; j < currentBlock.length; j++) {
+                    currentSum += Number(currentBlock[j]);
+                }
+                
+                if (currentSum > bestSum) {
+                    bestSum = currentSum;
+                    bestBlock = currentBlock;
+                }
+            }
+            
+            return { block: bestBlock, sum: bestSum };
+        }
+        
+        // Функция форматирования для вывода
+        function formatOutput(str) {
+            // Проверка на то, что строка состоит только из цифр
+            if (str.length === 0) {
+                return "Пустая строка";
+            }
+            for (let i = 0; i < str.length; i++) {
+                if (str[i] < '0' || str[i] > '9') {
+                    return "Ошибка! Только цифры 0-9";
+                }
+            }
+            
+            const { block, sum } = getMaxBlockData(str);
+            
+            if (block === '') {
+                return "Нет цифровых блоков (всеи)";
+            }
+            return `${block}, ${sum}`;
+        }
+        
+        // Получаем элементы
+        const inputElement = document.getElementById('inputString');
+        const button = document.getElementById('runBtn');
+        const resultDiv = document.getElementById('result');
+        
+        // Функция обновления результата
+        function updateResult() {
+            let userValue = inputElement.value;
+            let output = formatOutput(userValue);
+            resultDiv.innerHTML = `Результат: ${output}`;
+        }
+        
+        // Обработчик кнопки
+        button.addEventListener('click', updateResult);
+        
+        // Для примера при загрузке показываем результат для строки по умолчанию
+        updateResult();
+        
+        // Дополнительно: при изменении поля тоже можно обновлять (по желанию пользователя), но не обязательно
+        // Сделаем, чтобы было удобно: при вводе автоматически проверяем (но для чёткости можно и так)
+        inputElement.addEventListener('input', function() {
+            // Автообновление при вводе, но без излишнего спама
+            updateResult();
+        });
+    </script>
+</body>
+</html>
